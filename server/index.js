@@ -3,15 +3,15 @@ const cors = require('cors');
 const app = express();
 const ctrl = require('./controller');
 
-const { getAllhouses, createHouse } = ctrl;
+const { getAllhouses, createHouse, deleteHouse, updateHouse } = ctrl;
 
 app.use(express.json());
 app.use(cors());
 
 app.get('/api/houses', getAllhouses);
-// app.delete('api/houses', deleteHouse);
-app.post('api/houses', createHouse);
-// app.update('api/houses', updateHouse);
+app.delete('/api/houses/:houseId', deleteHouse);
+app.post('/api/houses', createHouse);
+app.put('/api/houses/:Id', updateHouse);
 
 
 const SERVER_PORT = 4004;
